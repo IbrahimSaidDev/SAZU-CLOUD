@@ -1,1 +1,16 @@
-
+{
+  "name": "sazu-cloud-backend",
+  "version": "1.0.0",
+  "description": "SAZU Cloud Backend API",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "firebase-admin": "^12.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1"
+  }
+}
