@@ -1,4 +1,3 @@
-
 import os
 import logging
 import threading
@@ -6,14 +5,12 @@ from flask import Flask
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 
-# Logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-VIP_CHANNEL = os.getenv("VIP_CHANNEL", "@ForexAiVip")  # optional
+VIP_CHANNEL = os.getenv("VIP_CHANNEL", "@ForexAiVip")
 
-# Flask keep-alive for Render Free 24/7
 flask_app = Flask(__name__)
 @flask_app.route('/')
 def home():
@@ -56,7 +53,7 @@ def main():
     if not BOT_TOKEN:
         logger.error("BOT_TOKEN baya nan! Saka shi a Render > Environment")
         return
-    keep_alive()  # Start Flask for Render Web Service
+    keep_alive()
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(button_handler))
