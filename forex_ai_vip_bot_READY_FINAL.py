@@ -28,23 +28,28 @@ def keep_alive():
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
         [InlineKeyboardButton("📈 VIP SIGNALS", callback_data='vip')],
-        [InlineKeyboardButton("🤖 AI ANALYSIS", callback_data='ai')],
+        [InlineKeyboardButton("🤖 FOREX AI ANALYSIS", callback_data='ai')],
+        [InlineKeyboardButton("💬 SUPPORT", url="https://t.me/IbrahimSaidDev")],
     ]
-    markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text("🔥 FOREX AI VIP BOT LIVE 24/7! Zaba:", reply_markup=markup)
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        "🔥 *FOREX AI VIP BOT - LIVE* 🔥\n\nBarka da zuwa Ibrahim!\nBot dinka yana aiki 24/7 akan Render ✅\n\nZaba daga kasa:",
+        reply_markup=reply_markup,
+        parse_mode='Markdown'
+    )
 
 async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
     if query.data == 'vip':
-        await query.edit_message_text("✅ VIP: XAUUSD BUY 2650 SL 2645 TP 2660")
-    else:
-        await query.edit_message_text("🤖 AI: Market Bullish yau!")
+        await query.edit_message_text("✅ VIP Signals: XAUUSD BUY 2650 SL 2645 TP 2660")
+    elif query.data == 'ai':
+        await query.edit_message_text("🤖 AI Analysis: Market yana Bullish yau!")
 
 def main():
     keep_alive()
     if not BOT_TOKEN:
-        logger.error("BOT_TOKEN baya nan!")
+        logger.error("BOT_TOKEN baya nan! Saka shi a Render > Environment")
         while True:
             time.sleep(60)
     app = Application.builder().token(BOT_TOKEN).build()
@@ -55,3 +60,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+                              
